@@ -14,6 +14,17 @@ sass:
 
 permalink: /posts/:title/
 
+texture:
+  title: Mingi KANG
+  tagline: Personal Blog
+  date_format: "%b %-d, %Y"
+  style: black
+  showNav: true
+  showPicker: false
+  navigation:
+    - title: First post !
+      url: "/first-post"
+
   # generate social links in footer
   social_links:
     # twitter: thelehhman
@@ -33,14 +44,3 @@ permalink: /posts/:title/
 plugins:
   - jekyll-seo-tag
 #  - jekyll-feed
-
-texture:
-  title: Mingi KANG
-  tagline: Personal Blog
-  date_format: "%b %-d, %Y"
-  style: black
-  showNav: true
-  showPicker: false
-  navigation:
-    - title: First post !
-      url: "/first-post"
