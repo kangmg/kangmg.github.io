@@ -14,8 +14,25 @@ document.addEventListener("DOMContentLoaded", function () {
         if (nav) nav.appendChild(toggleBtn);
     }
 
+    // Safe localStorage access
+    function getStoredTheme() {
+        try {
+            return localStorage.getItem("theme");
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function setStoredTheme(theme) {
+        try {
+            localStorage.setItem("theme", theme);
+        } catch (e) {
+            // Storage not available, ignore
+        }
+    }
+
     // Check preference
-    const currentTheme = localStorage.getItem("theme");
+    const currentTheme = getStoredTheme();
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     if (currentTheme === "dark" || (!currentTheme && systemPrefersDark)) {
@@ -33,6 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
         }
-        localStorage.setItem("theme", theme);
+        setStoredTheme(theme);
     });
 });

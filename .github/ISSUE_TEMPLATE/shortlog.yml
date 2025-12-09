@@ -1,0 +1,13 @@
+name: ShortLog Entry
+description: Create a new ShortLog post
+title: ""
+labels: ["shortlog"]
+body:
+  - type: textarea
+    id: content
+    attributes:
+      label: Content
+      description: Write your ShortLog post (supports Markdown)
+      placeholder: What's on your mind?
+    validations:
+      required: true
