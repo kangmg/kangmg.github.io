@@ -142,3 +142,14 @@ body.dark .shortlog-card.reply {
   display: block;
   padding: 4px 0;
 }
+
+/* Force sidebar nav items visible on mobile */
+@media (max-width: 1023px) {
+  .nav__list .nav__items {
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    transform: none !important;
+    position: static !important;
+  }
+}
