@@ -31,11 +31,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Check preference
+    // Check preference (default: light mode)
     const currentTheme = getStoredTheme();
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    if (currentTheme === "dark" || (!currentTheme && systemPrefersDark)) {
+    if (currentTheme === "dark") {
         document.body.classList.add("dark");
         toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
     }

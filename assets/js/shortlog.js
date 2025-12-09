@@ -15,17 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
             function createCard(author, dateStr, bodyContent, avatarUrl, htmlUrl, isReply = false) {
                 const card = document.createElement("div");
                 card.className = isReply ? "shortlog-card reply" : "shortlog-card";
-                card.style.border = isReply ? "none" : "1px solid #e2e8f0";
                 if (isReply) {
                     card.style.borderLeft = "2px solid #cbd5e1";
                     card.style.paddingLeft = "16px";
                     card.style.marginLeft = "20px";
                     card.style.marginTop = "10px";
                 } else {
+                    card.style.border = "1px solid #e2e8f0";
                     card.style.borderRadius = "8px";
                     card.style.padding = "16px";
                     card.style.marginBottom = "16px";
-                    card.style.backgroundColor = "#fff";
                 }
 
                 const htmlContent = DOMPurify.sanitize(marked.parse(bodyContent));

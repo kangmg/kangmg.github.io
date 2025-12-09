@@ -98,3 +98,31 @@ body.dark {
   font-size: 1.2rem;
   line-height: 1;
 }
+
+/* ShortLog Card Styles */
+.shortlog-card {
+  background-color: #fff;
+  color: #333;
+}
+
+body.dark .shortlog-card {
+  background-color: #2d2d2d;
+  color: #e0e0e0;
+  border-color: #404040 !important;
+}
+
+body.dark .shortlog-card strong {
+  color: #fff;
+}
+
+body.dark .shortlog-card .shortlog-body {
+  color: #e0e0e0;
+}
+
+body.dark .shortlog-card a {
+  color: #90caf9;
+}
+
+body.dark .shortlog-card.reply {
+  border-left-color: #555 !important;
+}
