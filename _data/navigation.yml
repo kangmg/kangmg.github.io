@@ -1,25 +1,37 @@
 # main links
 main:
-  - title: "Home"
-    url: https://kangmg.github.io/
+  # - title: "Home"
+  #   url: https://kangmg.github.io/
+  # - title: "About"
+  #   url: /about/
+  # - title: "GitHub"
+  #   url: https://github.com/kangmg
+  # - title: "CV"
+  #   url: https://kangmg.github.io/CV/
 
+sidebar_blog:
+  - title: "All Posts"
+    url: /
+  - title: "Research"
+    url: /categories/research/
+  - title: "Personal"
+    url: /categories/personal/
+  - title: "Projects"
+    url: /categories/projects/
+
+sidebar_microblog:
+  - title: "ShortLog"
+    url: /shortlog/
+
+sidebar_links:
   - title: "About"
     url: /about/
-
   - title: "GitHub"
     url: https://github.com/kangmg
-
   - title: "CV"
     url: https://kangmg.github.io/CV/
 
-  # - title: "Projects"
-  #   url: /projects/
-
-  # - title: "Categories"
-  #   url: /categories/
-
-# sidebar navigation (categories)
-# 2022.02.15 sidebar update : simple ver.
+# sidebar navigation (categories) - Keeping for backward compatibility if needed, but sidebar_blog replaces it
 categories:
   - title: "Research"
     url: /categories/research/

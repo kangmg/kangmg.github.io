@@ -2,6 +2,9 @@
 title: "Hi all! I'm Mingi, KANG👋🏻"
 permalink: /about/
 layout: single
+author_profile: true
+sidebar:
+  nav: "sidebar_links"
 comments: false
 ---
 

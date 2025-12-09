@@ -1,0 +1,25 @@
+---
+layout: single
+title: "ShortLog"
+permalink: /shortlog/
+author_profile: true
+sidebar:
+nav: "sidebar_microblog"
+---
+
+<div id="shortlog-controls" style="margin-bottom: 20px; text-align: right;">
+    <a href="https://github.com/{{ site.repository }}/issues/new?labels=shortlog&title=ShortLog+Entry" target="_blank"
+        class="btn btn--primary">
+        <i class="fab fa-github"></i> New Post
+    </a>
+</div>
+
+<div id="shortlog-feed">
+    <div class="text-center">
+        <i class="fas fa-spinner fa-spin"></i> Loading ShortLogs...
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+<script src="/assets/js/shortlog.js"></script>
