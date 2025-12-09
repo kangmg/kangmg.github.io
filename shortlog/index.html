@@ -8,11 +8,21 @@ nav: "sidebar_microblog"
 ---
 
 <div id="shortlog-controls" style="margin-bottom: 20px; text-align: right;">
-    <a href="https://github.com/kangmg/kangmg.github.io/issues/new?template=shortlog.yml" target="_blank"
-        class="btn btn--primary">
+    <a id="new-post-btn" href="#" target="_blank" class="btn btn--primary">
         <i class="fas fa-plus"></i> New Post
     </a>
 </div>
+
+<script>
+document.getElementById("new-post-btn").addEventListener("click", function(e) {
+    e.preventDefault();
+    const now = new Date();
+    const timestamp = now.toISOString().slice(0, 16).replace("T", " ");
+    const title = encodeURIComponent(`ShortLog ${timestamp}`);
+    const url = `https://github.com/kangmg/kangmg.github.io/issues/new?labels=shortlog&title=${title}`;
+    window.open(url, "_blank");
+});
+</script>
 
 <div id="shortlog-feed">
     <div class="text-center">
