@@ -126,3 +126,19 @@ body.dark .shortlog-card a {
 body.dark .shortlog-card.reply {
   border-left-color: #555 !important;
 }
+
+/* Mobile Sidebar Navigation Fix */
+.sidebar .nav__items {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.sidebar .nav__items li {
+  display: block;
+  padding: 5px 0;
+}
+
+.sidebar .nav__items a {
+  display: block;
+  padding: 4px 0;
+}
