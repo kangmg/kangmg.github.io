@@ -155,10 +155,10 @@
   }
 }
 
-.page__content + .pagination,
-.page__meta + .pagination,
-.page__share + .pagination,
-.page__comments + .pagination {
+.page__content+.pagination,
+.page__meta+.pagination,
+.page__share+.pagination,
+.page__comments+.pagination {
   margin-top: 1.5em;
   padding-top: 1em;
   border-top: 1px solid $border-color;
@@ -200,8 +200,8 @@
       margin-left: 0;
     }
   }
-  
-  img{
+
+  img {
     -webkit-transition: none;
     transition: none;
   }
@@ -339,8 +339,8 @@
      ========================================================================== */
 
 .nav__list {
-  margin-top: 1em;
-  margin-bottom: 1.5em;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 
   input[type="checkbox"],
   label {
@@ -395,7 +395,7 @@
     }
 
     /* selected*/
-    input:checked + label {
+    input:checked+label {
       color: white;
       background-color: mix(white, #000, 20%);
 
@@ -412,7 +412,7 @@
       transform: rotate(90deg);
     }
 
-    input:checked + label:hover:after {
+    input:checked+label:hover:after {
       -webkit-transform: rotate(0);
       -ms-transform: rotate(0);
       transform: rotate(0);
@@ -438,90 +438,67 @@
   }
 }
 
+/* 
+   Sidebar Navigation Styling 
+   Corrected based on actual HTML structure: h3.nav__title + ul.nav__items > li > a
+*/
+
+.nav__title {
+  margin: 1.5em 0 0.5em 0 !important;
+  /* Spacing between sections */
+  padding: 0 !important;
+  font-family: $sans-serif-narrow;
+  font-size: $type-size-5;
+  font-weight: bold;
+
+  /* Remove top margin for the very first title */
+  &:first-child {
+    margin-top: 0 !important;
+  }
+}
+
 .nav__list .nav__items {
-  margin: 0 0 2em 0;
+  margin: 0 !important;
+  padding: 0 0 0 15px !important;
+  /* Indentation for sub-items */
   font-family: $menufont;
   font-size: 1.5rem;
+  list-style: none;
+  /* Ensure no bullets */
+
+  li {
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+    /* Tighter spacing for sub-items */
+  }
 
   a {
+    display: block;
     color: inherit;
-    padding: 0 0 0 0;
-    font-size: ($type-size-6 + $type-size-5) / 2;
+    padding: 0.1em 0 !important;
+    /* Minimal vertical padding */
+    font-size: 0.9em !important;
+    /* Slightly smaller font for sub-items */
     font-weight: 500;
 
     &:hover {
       color: rgba($text-color, 0.8);
+      text-decoration: none;
     }
-  }
-
-  /* 2022.01.23 added */
-  ul {
-    margin-left: 1em;
-    padding: 0 0 0 1em;
-    border-left: 3px solid rgba($primary-color, 0.2);
-    li {
-      padding: 0.1em 0 0.1em 0;
-    }
-  }
-
-  hr {
-    margin: 0 1.5em 0.3em 0;
-    border-top: 0px;
   }
 
   .active {
-    font-weight: normal;
+    font-weight: bold;
+    color: $primary-color;
   }
 
-  .nav__total {
-    font-size: $type-size-6;
-  }
-
-
-  @include breakpoint(max-width $large - 1px) {
-    position: relative;
-    max-height: 0;
-    opacity: 0%;
-    overflow: hidden;
-    z-index: 10;
-    -webkit-transition: 0.3s ease-in-out;
-    transition: 0.3s ease-in-out;
-    -webkit-transform: translate(0, 10%);
-    -ms-transform: translate(0, 10%);
-    transform: translate(0, 10%);
+  /* Remove any nested ul styling that might have been there */
+  ul {
+    margin: 0;
+    padding: 0;
   }
 }
-
-@include breakpoint(max-width $large - 1px) {
-  .nav__list input:checked ~ .nav__items {
-    -webkit-transition: 0.5s ease-in-out;
-    transition: 0.5s ease-in-out;
-    max-height: 9999px; /* exaggerate max-height to accommodate tall lists*/
-    overflow: visible;
-    opacity: 1;
-    margin-top: 1em;
-    -webkit-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
-
-.nav__title {
-  margin: 0;
-  padding: 0.25rem 0.1rem;
-  font-family: $sans-serif-narrow;
-  font-size: $type-size-5;
-  font-weight: bold;
-}
-
-.nav__sub-title {
-  display: block;
-  margin: 1em 0 0 0;
-  padding: 0 0 0 0.3em;
-  font-size: $type-size-6;
-  font-weight: 600;
-}
-
 
 /*
      Table of contents navigation
@@ -530,7 +507,7 @@
 .toc {
   font-family: $sans-serif-narrow;
   color: $text-color;
-  background-color:$background-color;
+  background-color: $background-color;
   border-radius: $border-radius;
   padding: 0.5em 0.5em 0.5em 0.5em;
 
@@ -542,6 +519,9 @@
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
     border-bottom: 1.5px solid rgba($primary-color, 0.3);
+    margin: 0 !important;
+    /* Reset margin for TOC title */
+    padding: 0.5em !important;
   }
 
   // Scrollspy marks toc items as .active when they are in focus
@@ -575,24 +555,24 @@
     }
   }
 
-  li ul > li a {
+  li ul>li a {
     padding-left: 1.25rem;
     font-weight: normal;
   }
 
-  li ul li ul > li a {
+  li ul li ul>li a {
     padding-left: 1.75rem;
   }
 
-  li ul li ul li ul > li a {
+  li ul li ul li ul>li a {
     padding-left: 2.25rem;
   }
 
-  li ul li ul li ul li ul > li a {
+  li ul li ul li ul li ul>li a {
     padding-left: 2.75rem;
   }
 
-  li ul li ul li ul li ul li ul > li a {
+  li ul li ul li ul li ul li ul>li a {
     padding-left: 3.25rem
   }
 }

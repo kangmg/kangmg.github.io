@@ -36,7 +36,7 @@
 
   }
 
-  > * {
+  >* {
     /* sidebar left top & right margin */
     // margin-top:1.2em;
     /* 2022.01.25 avatar img margin top decrease */
@@ -172,6 +172,7 @@
     margin-bottom: 10px;
   }
 }
+
 .sidebar .author__name {
   font-family: $menufont;
   /* 2022.01.23 font size & weight change*/
@@ -183,6 +184,7 @@
   margin: 0;
   font-size: 1.4em;
   font-family: $menufont;
+
   @include breakpoint($large) {
     margin-top: 5px;
     margin-bottom: 10px;
@@ -212,7 +214,7 @@
   }
 
   .author__urls {
-    
+
     span.label {
       padding-left: 5px;
     }
@@ -325,13 +327,14 @@
 
   a {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0;
     padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 0;
+    padding-bottom: 0;
     color: inherit;
     font-size: $type-size-5;
     text-decoration: none;
+    line-height: 1.5;
   }
 }
 
@@ -361,4 +364,3 @@
     margin-right: initial;
   }
 }
-
