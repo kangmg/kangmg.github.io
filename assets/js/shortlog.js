@@ -79,8 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const script = document.createElement("script");
                 script.src = "https://utteranc.es/client.js";
-                script.setAttribute("repo", "kangmg/kangmg.github.io"); // Using the main repo as requested
-                script.setAttribute("issue-number", issueNumber);
+                script.setAttribute("repo", "kangmg/blog_comment"); // Use external comment repo
+                script.setAttribute("issue-term", `ShortLog ${issueNumber}`); // Map by term
                 script.setAttribute("theme", "github-light");
                 script.setAttribute("crossorigin", "anonymous");
                 script.async = true;
