@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     commentSection.style.marginTop = "15px";
 
                     const commentBtn = document.createElement("button");
-                    commentBtn.innerText = "💬 Add Comment / React";
+                    commentBtn.innerText = "💬 Show Comment";
                     commentBtn.style.backgroundColor = "transparent";
                     commentBtn.style.border = "1px solid #cbd5e1";
                     commentBtn.style.borderRadius = "5px";
