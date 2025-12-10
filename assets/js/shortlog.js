@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // Function to render a single card (issue or comment)
-            function createCard(author, dateStr, bodyContent, avatarUrl, htmlUrl, isReply = false) {
+            function createCard(author, dateStr, bodyContent, avatarUrl, htmlUrl, isReply = false, issueNumber = null) {
                 const card = document.createElement("div");
                 card.className = isReply ? "shortlog-card reply" : "shortlog-card";
                 if (isReply) {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const htmlContent = DOMPurify.sanitize(marked.parse(bodyContent));
 
-                card.innerHTML = `
+                let cardHeader = `
           <div style="display: flex; align-items: center; margin-bottom: 8px;">
             <img src="${avatarUrl}" alt="${author}" style="width: ${isReply ? '24px' : '32px'}; height: ${isReply ? '24px' : '32px'}; border-radius: 50%; margin-right: 10px;">
             <div>
@@ -42,9 +42,50 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         `;
 
+                card.innerHTML = cardHeader;
+
                 const body = `<div class="shortlog-body" style="font-size: 0.95em; line-height: 1.6;">${htmlContent}</div>`;
                 card.innerHTML += body;
+
+                // Add Comment Button for main issues (not replies)
+                if (!isReply && issueNumber) {
+                    const commentSection = document.createElement("div");
+                    commentSection.id = `comments-${issueNumber}`;
+                    commentSection.style.marginTop = "15px";
+
+                    const commentBtn = document.createElement("button");
+                    commentBtn.innerText = "💬 Add Comment / React";
+                    commentBtn.style.backgroundColor = "transparent";
+                    commentBtn.style.border = "1px solid #cbd5e1";
+                    commentBtn.style.borderRadius = "5px";
+                    commentBtn.style.padding = "5px 10px";
+                    commentBtn.style.fontSize = "0.85em";
+                    commentBtn.style.cursor = "pointer";
+                    commentBtn.style.color = "#64748b";
+                    commentBtn.onclick = function () {
+                        loadComments(issueNumber, commentSection, commentBtn);
+                    };
+
+                    commentSection.appendChild(commentBtn);
+                    card.appendChild(commentSection);
+                }
+
                 return card;
+            }
+
+            // Function to load Utterances comments dynamically
+            function loadComments(issueNumber, container, button) {
+                button.style.display = "none"; // Hide button after clicking
+
+                const script = document.createElement("script");
+                script.src = "https://utteranc.es/client.js";
+                script.setAttribute("repo", "kangmg/kangmg.github.io"); // Using the main repo as requested
+                script.setAttribute("issue-number", issueNumber);
+                script.setAttribute("theme", "github-light");
+                script.setAttribute("crossorigin", "anonymous");
+                script.async = true;
+
+                container.appendChild(script);
             }
 
             // Process each issue
@@ -64,11 +105,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
                     });
 
-                    // Main Issue Card
-                    const issueCard = createCard(issue.user.login, date, issue.body || "", issue.user.avatar_url, issue.html_url);
+                    // Main Issue Card - Pass issue.number
+                    const issueCard = createCard(issue.user.login, date, issue.body || "", issue.user.avatar_url, issue.html_url, false, issue.number);
                     container.appendChild(issueCard);
 
-                    // If there are comments, fetch and render them as replies
+                    // If there are comments, fetch and render them as replies (Optional: can be removed if using Utterances exclusively)
+                    // Keeping it for now to show existing comments immediately, but Utterances will also show them when loaded.
                     if (issue.comments > 0) {
                         try {
                             const commentsRes = await fetch(issue.comments_url);
